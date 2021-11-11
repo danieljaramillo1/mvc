@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hospitalModelStoreContainer" CdmEntityContainer="hospitalEntities">
+    <EntitySetMapping Name="cita">
+      <EntityTypeMapping TypeName="hospitalModel.cita">
+        <MappingFragment StoreEntitySet="cita">
+          <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="nom_acompañante" ColumnName="nom_acompañante" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medico">
+      <EntityTypeMapping TypeName="hospitalModel.medico">
+        <MappingFragment StoreEntitySet="medico">
+          <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+          <ScalarProperty Name="nom_medico" ColumnName="nom_medico" />
+          <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+          <ScalarProperty Name="tel_medico" ColumnName="tel_medico" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paciente">
+      <EntityTypeMapping TypeName="hospitalModel.paciente">
+        <MappingFragment StoreEntitySet="paciente">
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="tip_doc" ColumnName="tip_doc" />
+          <ScalarProperty Name="nom_paciente" ColumnName="nom_paciente" />
+          <ScalarProperty Name="dir_paciente" ColumnName="dir_paciente" />
+          <ScalarProperty Name="tel_paciente" ColumnName="tel_paciente" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="hospitalModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="act_cita" FunctionName="hospitalModel.Store.act_cita" />
+    <FunctionImportMapping FunctionImportName="actualizar_paciente" FunctionName="hospitalModel.Store.actualizar_paciente" />
+    <FunctionImportMapping FunctionImportName="anula_cita" FunctionName="hospitalModel.Store.anula_cita" />
+    <FunctionImportMapping FunctionImportName="anular_medico" FunctionName="hospitalModel.Store.anular_medico" />
+    <FunctionImportMapping FunctionImportName="anular_paciente" FunctionName="hospitalModel.Store.anular_paciente" />
+    <FunctionImportMapping FunctionImportName="consultar_citas" FunctionName="hospitalModel.Store.consultar_citas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hospitalModel.consultar_citas_Result">
+          <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="nom_acompañante" ColumnName="nom_acompañante" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultar_medico" FunctionName="hospitalModel.Store.consultar_medico">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hospitalModel.consultar_medico_Result">
+          <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+          <ScalarProperty Name="nom_medico" ColumnName="nom_medico" />
+          <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+          <ScalarProperty Name="tel_medico" ColumnName="tel_medico" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="consultar_paciente" FunctionName="hospitalModel.Store.consultar_paciente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hospitalModel.consultar_paciente_Result">
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="tip_doc" ColumnName="tip_doc" />
+          <ScalarProperty Name="nom_paciente" ColumnName="nom_paciente" />
+          <ScalarProperty Name="dir_paciente" ColumnName="dir_paciente" />
+          <ScalarProperty Name="tel_paciente" ColumnName="tel_paciente" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="guardar_medico" FunctionName="hospitalModel.Store.guardar_medico" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="hospitalModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="hospitalModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="hospitalModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="hospitalModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hospitalModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="hospitalModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="hospitalModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="hospitalModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="hospitalModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

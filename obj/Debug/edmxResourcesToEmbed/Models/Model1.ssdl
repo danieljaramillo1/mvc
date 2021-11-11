@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cita">
+    <Key>
+      <PropertyRef Name="cod_cita" />
+    </Key>
+    <Property Name="cod_cita" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="hora" Type="time" Precision="7" />
+    <Property Name="id_paciente" Type="nvarchar" MaxLength="10" />
+    <Property Name="id_medico" Type="nvarchar" MaxLength="10" />
+    <Property Name="valor" Type="int" />
+    <Property Name="diagnostico" Type="nvarchar" MaxLength="60" />
+    <Property Name="nom_acompañante" Type="nvarchar" MaxLength="60" />
+    <Property Name="activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="medico">
+    <Key>
+      <PropertyRef Name="id_medico" />
+    </Key>
+    <Property Name="id_medico" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="nom_medico" Type="nvarchar" MaxLength="50" />
+    <Property Name="especialidad" Type="nvarchar" MaxLength="30" />
+    <Property Name="tel_medico" Type="nvarchar" MaxLength="10" />
+    <Property Name="activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="paciente">
+    <Key>
+      <PropertyRef Name="id_paciente" />
+    </Key>
+    <Property Name="id_paciente" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="tip_doc" Type="nvarchar" MaxLength="20" />
+    <Property Name="nom_paciente" Type="nvarchar" MaxLength="50" />
+    <Property Name="dir_paciente" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel_paciente" Type="nvarchar" MaxLength="10" />
+    <Property Name="activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Function Name="act_cita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod_cita" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha" Type="date" Mode="In" />
+    <Parameter Name="hora" Type="time" Mode="In" />
+    <Parameter Name="id_paciente" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_medico" Type="nvarchar" Mode="In" />
+    <Parameter Name="valor" Type="int" Mode="In" />
+    <Parameter Name="diagnostico" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="nom_acompañante" Type="nvarchar" Mode="In" />
+    <Parameter Name="activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="actualizar_paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_paciente" Type="nvarchar" Mode="In" />
+    <Parameter Name="tip_doc" Type="nvarchar" Mode="In" />
+    <Parameter Name="nom_paciente" Type="nvarchar" Mode="In" />
+    <Parameter Name="dir_paciente" Type="nvarchar" Mode="In" />
+    <Parameter Name="tel_paciente" Type="nvarchar" Mode="In" />
+    <Parameter Name="activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="anula_cita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pcod_cita" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="anular_medico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_medico" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="anular_paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_paciente" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="consultar_citas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pcod_cita" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="consultar_medico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_medico" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="consultar_paciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_paciente" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="guardar_medico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_medico" Type="nvarchar" Mode="In" />
+    <Parameter Name="nom_medico" Type="nvarchar" Mode="In" />
+    <Parameter Name="especialidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="tel_medico" Type="nvarchar" Mode="In" />
+    <Parameter Name="activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="hospitalModelStoreContainer">
+    <EntitySet Name="cita" EntityType="Self.cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
